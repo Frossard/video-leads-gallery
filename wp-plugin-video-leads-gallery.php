@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Video Leads gallery
+ * Plugin Name: Video Leads Gallery
  * Plugin URI: https://github.com/Frossard/video-leads-gallery
  * Description: Wordpress video gallery who takes leads before playing. It uses Youtube playlist to play videos.
  * Version: 0.0.1
@@ -13,7 +13,7 @@
 
 # Verificação de segurança
 if(!defined('ABSPATH')){
-    die('Acesso Negado!');
+    die(__('Access Denied', 'leads-gallery'));
 }
 
 # Habilitando a tradução
