@@ -23,11 +23,16 @@ function leads_gallery_load_textdomain() {
 
 add_action('plugins_loaded', 'leads_gallery_load_textdomain');
 
+global $leads_gallery_config; //Object settings
+global $leads_gallery_message; //Success message
 global $leads_gallery_version;
 $leads_gallery_version = '1.0';
 
-#Ambiente no Wp-Admin
+#Instalação do banco de dados
 require_once ('../wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/install.php');
+
+#Ambiente no Wp-Admin
+require_once ('../wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/settings-update.php');
 require_once ('../wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/settings.php');
 
 

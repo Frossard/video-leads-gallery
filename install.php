@@ -23,7 +23,7 @@ function leads_gallery_install ()
         fl_leads boolean,
         ds_imagem varchar(150),
         id_fb varchar(250),
-        ds_fb_key varchar(250),
+        ds_fb_key text,
         PRIMARY KEY  (id)
     ) $charset_collate;
         
