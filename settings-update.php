@@ -3,15 +3,17 @@ if(!defined('ABSPATH')){
     die(__('Access Denied', 'leads-gallery'));
 }
 
+if(isset($_POST['e']) && $_POST['e'] == 'settings'){
+    
+    $leads_gallery_error = leads_gallery_validation($_POST);
+    
+    if(empty($leads_gallery_error))
+        $leads_gallery_message = leads_gallery_updateSettings($_POST);
+}
+
 $c = leads_gallery_recoverId();
 if($c != false){
     $leads_gallery_config = $c;
-}
-
-
-if(isset($_POST['e']) && $_POST['e'] == 'settings'){
-    
-    $leads_gallery_message = leads_gallery_updateSettings($_POST);
 }
 
 function leads_gallery_updateSettings($post)
@@ -34,6 +36,20 @@ function leads_gallery_updateSettings($post)
     }
     
     return $message;
+}
+
+function leads_gallery_validation($post)
+{
+    if(empty($post['ds_embed']))
+        return __('This settings cannot be saved, the <strong>Playlist Embed</strong> field is required', 'leads-gallery');
+    
+    if(empty($post['ds_largura']))
+        return __('This settings cannot be saved, the <strong>Width</strong> field is required', 'leads-gallery');
+    
+    if(empty($post['ds_altura']))
+        return __('This settings cannot be saved, the <strong>Height</strong> field is required', 'leads-gallery');
+    
+    return NULL;
 }
 
 function leads_gallery_setObj($post)

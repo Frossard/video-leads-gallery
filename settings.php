@@ -12,7 +12,7 @@ function leads_gallery_add_new_menu_items()
         "manage_options",
         "leads-gallery",
         "leads_gallery_page",
-        '../wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/img/icon-yt.png', //Optional. The URL to the menu item icon.
+        ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/img/icon-yt.png', //Optional. The URL to the menu item icon.
         20 //Optional. Position of the menu item in the menu.
     );
 }
@@ -20,6 +20,7 @@ function leads_gallery_add_new_menu_items()
 function leads_gallery_page()
 {
     global $leads_gallery_message;
+    global $leads_gallery_error;
     ?>
         <div class="wrap">
         <div id="icon-options-general" class="icon32"></div>
@@ -30,7 +31,25 @@ function leads_gallery_page()
             <div id="message" class="updated notice notice-success is-dismissible">
                 <p><?php echo $leads_gallery_message;?></p>
                 <button type="button" class="notice-dismiss">
-                    <span class="screen-reader-text">Dispensar este aviso.</span>
+                    <span class="screen-reader-text"><?php echo _e('Dismiss the notice', 'leads-gallery');?></span>
+                </button>
+            </div>
+        <?php endif;?>
+        
+        <?php if(!empty($leads_gallery_error)): ?>
+            <div id="message" class="error notice notice-error is-dismissible">
+                <p><?php echo $leads_gallery_error;?></p>
+                <button type="button" class="notice-dismiss">
+                    <span class="screen-reader-text"><?php echo _e('Dismiss the notice', 'leads-gallery');?></span>
+                </button>
+            </div>
+        <?php endif;?>
+        
+        <?php if(!empty($leads_gallery_message)): ?>
+            <div id="message" class="updated notice notice-success is-dismissible">
+                <p><?php echo _e('Use this shortcode <strong>[video_leads_gallery style="your_optional_custom_style_here"]</strong> to enable Video Leads Gallery!', 'leads-gallery');?></p>
+                <button type="button" class="notice-dismiss">
+                    <span class="screen-reader-text"><?php echo _e('Dismiss the notice', 'leads-gallery');?></span>
                 </button>
             </div>
         <?php endif;?>
@@ -99,10 +118,10 @@ function leads_gallery_display_options()
             add_settings_field("ds_embed", __('Playlist Embed*', 'leads-gallery'), "leads_gallery_display_embed_form_element", "leads-gallery", "playlist_section");
             register_setting("playlist_section", "ds_embed");
             
-            add_settings_field("ds_largura", __('Width', 'leads-gallery'), "leads_gallery_display_largura_form_element", "leads-gallery", "playlist_section");
+            add_settings_field("ds_largura", __('Width*', 'leads-gallery'), "leads_gallery_display_largura_form_element", "leads-gallery", "playlist_section");
             register_setting("playlist_section", "ds_largura");
             
-            add_settings_field("ds_altura", __('Height', 'leads-gallery'), "leads_gallery_display_altura_form_element", "leads-gallery", "playlist_section");
+            add_settings_field("ds_altura", __('Height*', 'leads-gallery'), "leads_gallery_display_altura_form_element", "leads-gallery", "playlist_section");
             register_setting("playlist_section", "ds_altura");
             
             add_settings_field("fl_leads", __('Enable Leads Captation', 'leads-gallery'), "leads_gallery_display_lead_form_element", "leads-gallery", "playlist_section");
@@ -111,9 +130,6 @@ function leads_gallery_display_options()
             /* Captação de Leads */
             
             add_settings_section("leads_section", __('Captation settings', 'leads-gallery'), "leads_gallery_display_leads_description", "leads-gallery");
-            
-            add_settings_field("ds_imagem", __('Background Image', 'leads-gallery'), "leads_gallery_background_form_element", "leads-gallery", "leads_section");
-            register_setting("leads_section", "ds_imagem", "leads_gallery_handle_file_upload");
             
             add_settings_field("id_fb", __('Facebook App ID', 'leads-gallery'), "leads_gallery_display_id_form_element", "leads-gallery", "leads_section");
             register_setting("leads_section", "id_fb");
@@ -132,13 +148,13 @@ function leads_gallery_display_options()
             
         add_settings_section("playlist_section", __('Youtube Playlist', 'leads-gallery'), "leads_gallery_display_playlist_description", "leads-gallery");
 
-        add_settings_field("ds_embed", __('Playlist Embed', 'leads-gallery'), "leads_gallery_display_embed_form_element", "leads-gallery", "playlist_section");
+        add_settings_field("ds_embed", __('Playlist Embed*', 'leads-gallery'), "leads_gallery_display_embed_form_element", "leads-gallery", "playlist_section");
         register_setting("playlist_section", "ds_embed");
 
-        add_settings_field("ds_largura", __('Width', 'leads-gallery'), "leads_gallery_display_largura_form_element", "leads-gallery", "playlist_section");
+        add_settings_field("ds_largura", __('Width*', 'leads-gallery'), "leads_gallery_display_largura_form_element", "leads-gallery", "playlist_section");
         register_setting("playlist_section", "ds_largura");
 
-        add_settings_field("ds_altura", __('Height', 'leads-gallery'), "leads_gallery_display_altura_form_element", "leads-gallery", "playlist_section");
+        add_settings_field("ds_altura", __('Height*', 'leads-gallery'), "leads_gallery_display_altura_form_element", "leads-gallery", "playlist_section");
         register_setting("playlist_section", "ds_altura");
 
         add_settings_field("fl_leads", __('Enable Leads Captation', 'leads-gallery'), "leads_gallery_display_lead_form_element", "leads-gallery", "playlist_section");
@@ -147,9 +163,6 @@ function leads_gallery_display_options()
         /* Captação de Leads */
 
         add_settings_section("leads_section", __('Captation settings', 'leads-gallery'), "leads_gallery_display_leads_description", "leads-gallery");
-
-        add_settings_field("ds_imagem", __('Background Image', 'leads-gallery'), "leads_gallery_background_form_element", "leads-gallery", "leads_section");
-        register_setting("leads_section", "ds_imagem", "leads_gallery_handle_file_upload");
 
         add_settings_field("id_fb", __('Facebook App ID', 'leads-gallery'), "leads_gallery_display_id_form_element", "leads-gallery", "leads_section");
         register_setting("leads_section", "id_fb");
@@ -205,28 +218,6 @@ function leads_gallery_display_leads_description(){
     _e("After enabled leads captation, it's necessary set the Facebook keys for Facebook login app.", 'leads-gallery');
 }
 
-# Imagem de background
-function leads_gallery_background_form_element()
-{
-    global $leads_gallery_config;
-    ?>
-        <input type="file" name="ds_imagem" id="ds_imagem" value="<?php echo leads_gallery_getValue($leads_gallery_config, 'ds_imagem'); ?>" />
-        <?php echo get_option("ds_imagem"); ?>
-    <?php
-}
-
-function leads_gallery_handle_file_upload()
-{
-    if(!empty($_FILES["ds_imagem"]["tmp_name"]))
-    {
-        $urls = wp_handle_upload($_FILES["ds_imagem"], array('test_form' => FALSE));
-        $temp = $urls["url"];
-        return $temp;   
-    }
-
-    return get_option("ds_imagem");
-}
-
 function leads_gallery_display_id_form_element()
 {
     global $leads_gallery_config;
@@ -247,7 +238,7 @@ function leads_gallery_display_key_form_element()
 /* Tab 2 - Leads List */
 
 function leads_gallery_display_list_description(){
-    _e('This is the registered leads until today', 'leads-gallery');
+    _e('This is the registered leads until today.', 'leads-gallery');
     echo '<br/><br/>';
 }
 
