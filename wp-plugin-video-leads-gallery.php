@@ -37,21 +37,14 @@ require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE_
 require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/settings.php');
 
 #Ambiente Front-end
-require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/template/default.php');
+require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/public/app.php');
 
-# Shotcode
-function leads_gallery_shortcode($attrs){
-    
-    global $leads_gallery_config;
-    
-    $largura = leads_gallery_getValue($leads_gallery_config, 'ds_largura');
-    $altura = leads_gallery_getValue($leads_gallery_config, 'ds_altura');
-    
-    extract( shortcode_atts(array(
-        'style' => ''
-    ), $attrs));
-    
-    return '<div class="video-leads-gallery" style="width:' . $largura . 'px; height:' . $altura . 'px; ' . $style . '">' . leads_gallery_getValue_base64($leads_gallery_config, 'ds_embed') . '</div>';
+function leads_gallery_load_assets()
+{
+    wp_enqueue_style( 'video-leads-gallery', '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/css/video-leads-gallery.css' );
+    wp_enqueue_script( 'video-leads-gallery', '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/js/video-leads-gallery.js', array('jquery'), '1.0.0', true );
 }
+
+add_action( 'wp_enqueue_scripts', 'leads_gallery_load_assets' );
 
 add_shortcode('video_leads_gallery', 'leads_gallery_shortcode');

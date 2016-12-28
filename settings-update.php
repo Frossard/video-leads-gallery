@@ -60,7 +60,6 @@ function leads_gallery_setObj($post)
     $config->ds_largura = addslashes($post['ds_largura']);
     $config->ds_altura = addslashes($post['ds_altura']);
     $config->fl_leads = isset($post['fl_leads']) ? addslashes($post['fl_leads']) : 0;
-    $config->ds_imagem = !empty($config->ds_imagem) ? addslashes($post['ds_imagem']) : NULL;
     $config->id_fb = addslashes($post['id_fb']);
     $config->ds_fb_key = addslashes($post['ds_fb_key']);
     
@@ -94,7 +93,6 @@ function leads_gallery_insert($config)
             'ds_largura' => !empty($config->ds_largura) ? $config->ds_largura : NULL,
             'ds_altura' => !empty($config->ds_altura) ? $config->ds_altura : NULL,
             'fl_leads' => !empty($config->fl_leads) ? $config->fl_leads : NULL,
-            'ds_imagem' => !empty($config->ds_imagem) ? $config->ds_imagem : NULL,
             'id_fb' => !empty($config->id_fb) ? $config->id_fb : NULL,
             'ds_fb_key' => !empty($config->ds_fb_key) ? $config->ds_fb_key : NULL,
 	), 
@@ -121,7 +119,6 @@ function leads_gallery_update($config)
             'ds_largura' => !empty($config->ds_largura) ? $config->ds_largura : NULL,
             'ds_altura' => !empty($config->ds_altura) ? $config->ds_altura : NULL,
             'fl_leads' => !empty($config->fl_leads) ? $config->fl_leads : NULL,
-            'ds_imagem' => !empty($config->ds_imagem) ? $config->ds_imagem : NULL,
             'id_fb' => !empty($config->id_fb) ? $config->id_fb : NULL,
             'ds_fb_key' => !empty($config->ds_fb_key) ? $config->ds_fb_key : NULL,
 	), 
@@ -150,5 +147,3 @@ function leads_gallery_getValue_base64($a, $attr){
         return base64_decode($a->$attr);
     return '';
 }
-
-//date('Y-m-d h:i:s')
