@@ -36,6 +36,8 @@ require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE_
 require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/settings-update.php');
 require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/settings.php');
 
+#Ambiente Front-end
+require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/template/default.php');
 
 # Shotcode
 function leads_gallery_shortcode($attrs){

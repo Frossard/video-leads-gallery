@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-27 14:53-0200\n"
-"PO-Revision-Date: 2016-12-27 14:57-0200\n"
+"POT-Creation-Date: 2016-12-28 11:42-0200\n"
+"PO-Revision-Date: 2016-12-28 11:49-0200\n"
 "Language-Team: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
@@ -13,59 +13,103 @@ msgstr ""
 "Last-Translator: \n"
 "Language: pt_BR\n"
 
-#: install.php:4 settings.php:3 wp-plugin-video-leads-gallery.php:16
+#: install.php:4 settings-update.php:3 settings.php:3
+#: wp-plugin-video-leads-gallery.php:16
 msgid "Access Denied"
 msgstr "Acesso Negado"
 
-#: settings.php:47
+#: settings-update.php:29
+msgid "Settings updated successfully!"
+msgstr "Configurações atualizadas com sucesso!"
+
+#: settings-update.php:35
+msgid "Settings saved successfully!"
+msgstr "Definições salvas com sucesso!"
+
+#: settings-update.php:44
+msgid ""
+"This settings cannot be saved, the <strong>Playlist Embed</strong> field is "
+"required"
+msgstr ""
+"As configurações não puderam ser salvas, o campo <strong>Playlist "
+"Incorporada</strong> é necessário"
+
+#: settings-update.php:47
+msgid ""
+"This settings cannot be saved, the <strong>Width</strong> field is required"
+msgstr ""
+"As configurações não puderam ser salvas, o campo <strong>Largura</strong> é "
+"necessário"
+
+#: settings-update.php:50
+msgid ""
+"This settings cannot be saved, the <strong>Height</strong> field is required"
+msgstr ""
+"As configurações não puderam ser salvas, o campo <strong>Altura</strong> é "
+"necessário"
+
+#: settings.php:35 settings.php:44 settings.php:53
+msgid "Dismiss the notice"
+msgstr "Fechar o aviso"
+
+#: settings.php:51
+msgid ""
+"Use this shortcode <strong>[video_leads_gallery style="
+"\"your_optional_custom_style_here\"]</strong> to enable Video Leads Gallery!"
+msgstr ""
+"Use esse shortcode <strong>[video_leads_gallery style="
+"\"seu_estilo_customizado_aqui_opcional\"]</strong> para habilitar o Video "
+"Leads Gallery!"
+
+#: settings.php:74
 msgid "Settings"
 msgstr "Configurações"
 
-#: settings.php:48
+#: settings.php:75
 msgid "List of Leads"
 msgstr "Listagem de Leads"
 
-#: settings.php:86 settings.php:122
+#: settings.php:95
+msgid "(*) Required Fields"
+msgstr "(*) Campos Obrigatórios"
+
+#: settings.php:117 settings.php:150
 msgid "Youtube Playlist"
 msgstr "Playlist do Youtube"
 
-#: settings.php:88 settings.php:124
-msgid "Playlist Embed"
-msgstr "Playlist do Youtube"
+#: settings.php:119 settings.php:152
+msgid "Playlist Embed*"
+msgstr "Playlist Incorporada*"
 
-#: settings.php:91 settings.php:127
-msgid "Width"
-msgstr "Largura"
+#: settings.php:122 settings.php:155
+msgid "Width*"
+msgstr "Largura*"
 
-#: settings.php:94 settings.php:130
-msgid "Height"
-msgstr "Altura"
+#: settings.php:125 settings.php:158
+msgid "Height*"
+msgstr "Altura*"
 
-#: settings.php:97 settings.php:133
+#: settings.php:128 settings.php:161
 msgid "Enable Leads Captation"
 msgstr "Permitir a Captação de Leads"
 
-#: settings.php:102 settings.php:138
+#: settings.php:133 settings.php:166
 msgid "Captation settings"
 msgstr "Configuração da captação"
 
-#: settings.php:104 settings.php:140
-msgid "Background Image"
-msgstr "Imagem de Fundo"
-
-#: settings.php:107 settings.php:143
+#: settings.php:135 settings.php:168
 msgid "Facebook App ID"
 msgstr "ID do Aplicativo do Facebook"
 
-#: settings.php:110 settings.php:146
+#: settings.php:138 settings.php:171
 msgid "Facebook App Secret Key"
 msgstr "Chave Secreta do Aplicativo do Facebook"
 
-#: settings.php:115
+#: settings.php:143
 msgid "Registered Leads"
 msgstr "Leads Cadastrados"
 
-#: settings.php:155
+#: settings.php:180
 msgid ""
 "First it's necessary set the Youtube playlist and it's vídeo width and "
 "height."
@@ -73,15 +117,15 @@ msgstr ""
 "Primeiro é necessário definir a lista de reprodução do Youtube e sua "
 "largura e altura de vídeo."
 
-#: settings.php:169 settings.php:176
+#: settings.php:196 settings.php:204
 msgid "(Only numbers)"
 msgstr "(Somente números)"
 
-#: settings.php:183
+#: settings.php:212
 msgid "Yes"
 msgstr "Sim"
 
-#: settings.php:190
+#: settings.php:219
 msgid ""
 "After enabled leads captation, it's necessary set the Facebook keys for "
 "Facebook login app."
@@ -89,29 +133,29 @@ msgstr ""
 "Após ativada a captação de leads, é necessário definir as chaves do "
 "Facebook para o aplicativo de login do Facebook."
 
-#: settings.php:217 settings.php:224
+#: settings.php:226 settings.php:234
 msgid "(Get on Facebook Login App)"
 msgstr "(Obter através do aplicativo do Facebook)"
 
-#: settings.php:232
-msgid "This is the registered leads until today"
+#: settings.php:242
+msgid "This is the registered leads until today."
 msgstr "Este é o registro de leads cadastrados até hoje"
 
-#: settings.php:245
+#: settings.php:255
 msgid "Name"
 msgstr "Nome"
 
-#: settings.php:246
+#: settings.php:256
 msgid "Email"
 msgstr "E-mail"
 
-#: settings.php:247
+#: settings.php:257
 msgid "Created At"
 msgstr "Data do Cadastro"
 
 #. Name of the plugin
 msgid "Video Leads Gallery"
-msgstr "Vídeo Leads Gallery"
+msgstr ""
 
 #. Description of the plugin
 msgid ""

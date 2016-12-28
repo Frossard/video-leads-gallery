@@ -12,13 +12,14 @@ function leads_gallery_add_new_menu_items()
         "manage_options",
         "leads-gallery",
         "leads_gallery_page",
-        ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/img/icon-yt.png', //Optional. The URL to the menu item icon.
+        '../wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/img/icon-yt.png', //Optional. The URL to the menu item icon.
         20 //Optional. Position of the menu item in the menu.
     );
 }
 
 function leads_gallery_page()
 {
+    global $leads_gallery_config;
     global $leads_gallery_message;
     global $leads_gallery_error;
     ?>
@@ -45,7 +46,7 @@ function leads_gallery_page()
             </div>
         <?php endif;?>
         
-        <?php if(!empty($leads_gallery_message)): ?>
+        <?php if(!empty($leads_gallery_config)): ?>
             <div id="message" class="updated notice notice-success is-dismissible">
                 <p><?php echo _e('Use this shortcode <strong>[video_leads_gallery style="your_optional_custom_style_here"]</strong> to enable Video Leads Gallery!', 'leads-gallery');?></p>
                 <button type="button" class="notice-dismiss">

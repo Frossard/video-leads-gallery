@@ -21,7 +21,6 @@ function leads_gallery_install ()
         ds_largura varchar(55),
         ds_altura varchar(55),
         fl_leads boolean,
-        ds_imagem varchar(150),
         id_fb varchar(250),
         ds_fb_key text,
         PRIMARY KEY  (id)
