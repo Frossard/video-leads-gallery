@@ -12,12 +12,17 @@ jQuery(function(){
         var email = jQuery("#video-leads-gallery-email").val();
         
         jQuery.ajax({
-            url: 'http://' + window.location.hostname + '/darwinenem/wp-content/plugins/wp-plugin-video-leads-gallery/public/app.php',
+            url: ajax_object.ajax_url,
             type: "POST",
+            data: {
+                action: 'video_leads_gallery',
+                name: name,
+                email: email
+            },
             success: function (result) {
                 var json = JSON.parse(result);
                 if (json.retorno === 0){
-                    
+                    jQuery(".video-leads-gallery-middle").fadeOut('slow');
                 }
             },
             complete: function () {

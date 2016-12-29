@@ -16,6 +16,15 @@ if(!defined('ABSPATH')){
     die(__('Access Denied', 'leads-gallery'));
 }
 
+add_action('init', 'leads_gallery_load_session', 1);
+
+function leads_gallery_load_session() 
+{
+    if(!session_id()) {
+        session_start();
+    }
+}
+
 # Habilitando a tradução
 function leads_gallery_load_textdomain() {
     load_plugin_textdomain('leads-gallery', false, dirname(plugin_basename(__FILE__)) . '/languages/');
@@ -42,7 +51,12 @@ require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE_
 function leads_gallery_load_assets()
 {
     wp_enqueue_style( 'video-leads-gallery', '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/css/video-leads-gallery.css' );
-    wp_enqueue_script( 'video-leads-gallery', '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/js/video-leads-gallery.js', array('jquery'), '1.0.0', true );
+    wp_register_script( 'video-leads-gallery', '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/js/video-leads-gallery.js', array('jquery'), '1.0.0', true );
+    
+    $ajax_object = array('ajax_url' => admin_url( 'admin-ajax.php' ));
+    wp_localize_script( 'video-leads-gallery', 'ajax_object', $ajax_object );
+    
+    wp_enqueue_script('video-leads-gallery');
 }
 
 add_action( 'wp_enqueue_scripts', 'leads_gallery_load_assets' );

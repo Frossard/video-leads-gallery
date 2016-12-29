@@ -3,17 +3,38 @@ if(!defined('ABSPATH')){
     die(__('Access Denied', 'leads-gallery'));
 }
 
-if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['e'] == 'L')
+/* Ajax INICIO */
+add_action( 'wp_ajax_video_leads_gallery', 'my_action_callback' );
+add_action( 'wp_ajax_nopriv_video_leads_gallery', 'my_action_callback' );
+
+function my_action_callback()
 {
     $lead = leads_gallery_setObj_lead($_POST);
-    leads_gallery_insert_leads($lead);
     
-    return true;
+    if(leads_gallery_insert_leads($lead)){
+        
+        $_SESSION['video_leads_gallery_register'] = 'OK';
+        
+        $json = array(
+            'retorno' => 0
+        );
+        
+    }else{
+        
+        $json = array(
+            'retorno' => 1,
+            'error' => __('Oops! Something wrong happened.', 'leads-gallery')
+        );
+    }
+    
+    echo json_encode($json);
+    die;
 }
+/* Ajax FIM */
 
 # Shotcode
-function leads_gallery_shortcode($attrs){
-    
+function leads_gallery_shortcode($attrs)
+{    
     global $leads_gallery_config;
     
     $embed = leads_gallery_getValue_base64($leads_gallery_config, 'ds_embed');
@@ -37,7 +58,7 @@ function leads_gallery_shortcode($attrs){
     
     
     /* Charging templates */
-    if($is_lead == 1)
+    if(($is_lead == 1) && empty($_SESSION['video_leads_gallery_register']))
     {
         #Template for lead capture
         $leads = file_get_contents(plugin_dir_url( __FILE__ ) . 'templates/leads.html');
@@ -61,8 +82,8 @@ function leads_gallery_setObj_lead($post)
 {
     $lead = new stdClass();
     
-    $lead->ds_name = addslashes($post['video-leads-gallery-name']);
-    $lead->ds_email = addslashes($post['video-leads-gallery-email']);
+    $lead->ds_name = addslashes($post['name']);
+    $lead->ds_email = addslashes($post['email']);
     
     return $lead;
 }
@@ -71,17 +92,39 @@ function leads_gallery_insert_leads($lead)
 {
     global $wpdb;
     
-    $wpdb->insert( 
-	'wp_lead_list', 
-	array( 
-            'ds_name' => $lead->ds_name, 
-            'ds_email' => $lead->ds_email,
-            'dt_cadastro' => date('Y-m-d h:i:s')
-	), 
-	array( 
-            '%s', 
-            '%s',
-            '%s'
-	) 
-    );
+    if(leads_gallery_insert_verify_lead($lead))
+    {
+        $wpdb->insert( 
+            'wp_leads_list', 
+            array( 
+                'ds_name' => $lead->ds_name, 
+                'ds_email' => $lead->ds_email,
+                'dt_cadastro' => date('Y-m-d h:i:s')
+            ), 
+            array( 
+                '%s', 
+                '%s',
+                '%s'
+            ) 
+        );
+    }
+    
+    return true;
+}
+
+function leads_gallery_insert_verify_lead($lead)
+{
+    global $wpdb;
+    
+    $rows = $wpdb->get_results( "SELECT id FROM wp_leads_list WHERE ds_email = '" . $lead->ds_email . "' ORDER BY id DESC" );
+    
+    if(!empty($rows))
+    {
+        foreach ($rows as $row)
+        {
+            if(!empty($row->id)){ return false;}
+        }
+        return true;
+    }
+    return true;
 }
