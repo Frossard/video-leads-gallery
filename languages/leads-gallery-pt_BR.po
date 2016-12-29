@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-28 11:42-0200\n"
-"PO-Revision-Date: 2016-12-28 11:49-0200\n"
+"POT-Creation-Date: 2016-12-29 11:49-0200\n"
+"PO-Revision-Date: 2016-12-29 11:53-0200\n"
 "Language-Team: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Language: pt_BR\n"
 
 #: install.php:4 settings-update.php:3 settings.php:3
-#: wp-plugin-video-leads-gallery.php:16
+#: wp-plugin-video-leads-gallery.php:16 public/app.php:3
 msgid "Access Denied"
 msgstr "Acesso Negado"
 
@@ -24,7 +24,7 @@ msgstr "Configurações atualizadas com sucesso!"
 
 #: settings-update.php:35
 msgid "Settings saved successfully!"
-msgstr "Definições salvas com sucesso!"
+msgstr "Configurações salvas com sucesso!"
 
 #: settings-update.php:44
 msgid ""
@@ -32,25 +32,25 @@ msgid ""
 "required"
 msgstr ""
 "As configurações não puderam ser salvas, o campo <strong>Playlist "
-"Incorporada</strong> é necessário"
+"Incorporada</strong> é obrigatório"
 
 #: settings-update.php:47
 msgid ""
 "This settings cannot be saved, the <strong>Width</strong> field is required"
 msgstr ""
 "As configurações não puderam ser salvas, o campo <strong>Largura</strong> é "
-"necessário"
+"obrigatório"
 
 #: settings-update.php:50
 msgid ""
 "This settings cannot be saved, the <strong>Height</strong> field is required"
 msgstr ""
 "As configurações não puderam ser salvas, o campo <strong>Altura</strong> é "
-"necessário"
+"obrigatório"
 
 #: settings.php:35 settings.php:44 settings.php:53
 msgid "Dismiss the notice"
-msgstr "Fechar o aviso"
+msgstr "Fechar a mensagem"
 
 #: settings.php:51
 msgid ""
@@ -153,9 +153,17 @@ msgstr "E-mail"
 msgid "Created At"
 msgstr "Data do Cadastro"
 
+#: public/app.php:26
+msgid "Oops! Something wrong happened."
+msgstr "Oops! Aconteceu algum problema."
+
+#: public/app.php:69
+msgid "en_US"
+msgstr "pt_BR"
+
 #. Name of the plugin
 msgid "Video Leads Gallery"
-msgstr ""
+msgstr "Video Leads Gallery"
 
 #. Description of the plugin
 msgid ""
@@ -167,12 +175,12 @@ msgstr ""
 
 #. URI of the plugin
 msgid "https://github.com/Frossard/video-leads-gallery"
-msgstr ""
+msgstr "https://github.com/Frossard/video-leads-gallery"
 
 #. Author of the plugin
 msgid "Victor Frossard"
-msgstr ""
+msgstr "Victor Frossard"
 
 #. Author URI of the plugin
 msgid "http://victorfrossard.com.br/"
-msgstr ""
+msgstr "http://victorfrossard.com.br/"
