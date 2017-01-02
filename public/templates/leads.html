@@ -3,13 +3,21 @@
 </div>
 
 <div class="video-leads-gallery-middle">
-    <h2>Faça seu cadastro e<br/><strong>ASSISTA DE GRAÇA</strong></h2>
-    <a href="javascript:;" class="button" onClick="runAPI();">Facebook</a>
+    <h2>Assista gratuitamente</h2>
+    <p>Por favor faça o login para continuar</p>
+    <a href="javascript:;" class="button-fb" onClick="runAPI();"><span class="icon-fb"></span> Facebook</a>
     <div id="video_leads_gallery_status"></div>
-    <p>ou faça o cadastro com seu e-mail abaixo:</p>
+    
+    <div class="divider">
+        <p>ou</p>
+        <span></span>
+    </div>
+    
+    <a href="javascript:;" class="button-email" id="video-leads-gallery-enable-email">@ E-MAIL</a>
+    
     <form method="post">
-        <input type="text" name="video-leads-gallery-name" id="video-leads-gallery-name" placeholder="Nome"/>
-        <input type="email" name="video-leads-gallery-email" id="video-leads-gallery-email" placeholder="E-mail"/>
-        <button class="button" id="video-leads-gallery-salvar" type="submit">Cadastrar</button>
+        <input type="text" name="video-leads-gallery-name" id="video-leads-gallery-name" placeholder="Nome*"/>
+        <input type="email" name="video-leads-gallery-email" id="video-leads-gallery-email" placeholder="E-mail*"/>
+        <button class="button-email" id="video-leads-gallery-salvar" type="submit">Cadastrar</button>
     </form>
 </div>

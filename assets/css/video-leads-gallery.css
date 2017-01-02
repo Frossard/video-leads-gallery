@@ -11,9 +11,23 @@
 .video-leads-gallery-front a{ width: 100%; float: left; height: 100%;}
 
 .video-leads-gallery-middle{ background: #fbfcfc; text-align: center; display: none;}
-.video-leads-gallery-middle h2{ width: 100%; float: left;  font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; color: #bed433; font-size: 25px; margin-top: 20px;}
-.video-leads-gallery-middle h2 strong{ color: #7b2e86; font-size: 1.4em; line-height: 1.4em;}
-.video-leads-gallery-middle .btn{ margin: 10px 0px 20px; }
-.video-leads-gallery-middle input{ margin-right: 5px; }
+.video-leads-gallery-middle h2{ width: 100%; float: left; font-weight: bold; text-transform: uppercase;  font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; color: #3c3c3c; font-size: 30px; margin-top: 20px; margin-bottom: 10px;}
+.video-leads-gallery-middle p{ color: #3c3c3c; font-size: 18px; margin-bottom: 15px;}
 
-.video-leads-gallery-back{ }
+.video-leads-gallery-middle .button-fb{ background: #3b5998; border-radius: 4px; color: #ffffff; text-decoration: none; display: inline-block; padding: 7px 79px; font-size: 22px; font-weight: bold; line-height: 30px; margin-bottom: 29px;}
+.video-leads-gallery-middle .icon-fb{ width: 31px; height: 31px; float: left; background: url(../img/icon-fb.png) no-repeat center; margin-right: 19px;}
+
+.video-leads-gallery-middle .divider{ width: 100%; float: left; height: 24px; text-align: center; margin-bottom: 30px;}
+.video-leads-gallery-middle .divider span{ width: 312px; margin: 0 auto; height: 1px; display: block; background: #7f7f7f; margin-top: -11px; position: relative; z-index: 1;}
+.video-leads-gallery-middle .divider p{ background: #fbfcfc; width: 20px; padding: 0px 10px; position: relative; z-index: 2; text-align: center; margin: 0 auto;}
+
+.video-leads-gallery-middle .button-email{ background: #8eba86; color: #fff; border: none; text-decoration: none; text-transform: uppercase; font-weight: bold; font-size: 18px; border-radius: 4px; padding: 10px 114px; display: inline-block;}
+
+.video-leads-gallery-middle form{ display: none; }
+.video-leads-gallery-middle form input{ display: block; margin: 0 auto; width: 312px; height: 45px; margin-bottom: 15px !important;}
+.video-leads-gallery-middle form button.button-email{ padding: 10px 100px;}
+
+.video-leads-gallery-middle form input.placeholder_erro::-webkit-input-placeholder{ color: #ff0000;}
+.video-leads-gallery-middle form input.placeholder_erro:-moz-placeholder{ color: #ff0000;}
+.video-leads-gallery-middle form input.placeholder_erro::-moz-placeholder{ color: #ff0000;}
+.video-leads-gallery-middle form input.placeholder_erro:-ms-input-placeholder{ color: #ff0000;}

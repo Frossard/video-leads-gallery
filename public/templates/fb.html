@@ -2,10 +2,6 @@
     function statusChangeCallback(response) {
         if (response.status === "connected") {
             runAPI();
-        } else if (response.status === "not_authorized") {
-            document.getElementById("video_leads_gallery_status").innerHTML = "Please log into this app.";
-        } else {
-            document.getElementById("video_leads_gallery_status").innerHTML = "Please log into Facebook.";
         }
     }
 
