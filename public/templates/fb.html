@@ -1,8 +1,5 @@
-<script>
+<script>    
     function statusChangeCallback(response) {
-        console.log("statusChangeCallback");
-        console.log(response);
-
         if (response.status === "connected") {
             runAPI();
         } else if (response.status === "not_authorized") {
@@ -22,6 +19,7 @@
         FB.init({
             appId      : "#FB_ID#",
             cookie     : true,
+            oauth      : true,
             xfbml      : true, 
             version    : "v2.8" 
         });
@@ -40,10 +38,15 @@
     }(document, "script", "facebook-jssdk"));
 
     function runAPI() {
-        console.log("Welcome!  Fetching your information.... ");
-        FB.api("/me", function(response) {
-            console.log("Successful login for: " + response.name);
-            document.getElementById("video_leads_gallery_status").innerHTML = "Thanks for logging in, " + response.name + "!";
-        });
+        FB.login(
+            function(response) {
+                if (response.authResponse) {
+                   FB.api('/me?fields=id,name,email', function(response) {
+                       #AJAX#
+                   });
+                }
+            },
+            {scope: 'public_profile,email'}
+        );
     }
 </script>

@@ -66,7 +66,7 @@ function leads_gallery_shortcode($attrs)
         #Scripts from Facebook API
         $script_fb = file_get_contents(plugin_dir_url( __FILE__ ) . 'templates/fb.html');
         #Replacing keywords
-        $script_fb = str_replace(array('#FB_ID#', '#LANG#'), array($fb_id, __('en_US', 'leads-gallery')), $script_fb);
+        $script_fb = str_replace(array('#FB_ID#', '#LANG#', '#AJAX#'), array($fb_id, __('en_US', 'leads-gallery'), leads_gallery_cadastro_ajax()), $script_fb);
         
         $template = str_replace('#LEADS#', $leads, $template);
         $template .= $script_fb;
@@ -127,4 +127,23 @@ function leads_gallery_insert_verify_lead($lead)
         return true;
     }
     return true;
+}
+
+function leads_gallery_cadastro_ajax()
+{
+    return "jQuery.ajax({
+        url: '" . admin_url( 'admin-ajax.php' ) . "',
+        type: 'POST',
+        data: {
+            action: 'video_leads_gallery',
+            name: response.name,
+            email: response.email
+        },
+        success: function (result) {
+            var json = JSON.parse(result);
+            if (json.retorno === 0){
+                jQuery('.video-leads-gallery-middle').fadeOut('slow');
+            }
+        }
+    });";
 }
