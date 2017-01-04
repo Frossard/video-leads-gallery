@@ -107,7 +107,7 @@ function leads_gallery_page()
             {
                 case "leads-gallery":
                     
-                    if(isset($_GET["action"]) && ($_GET["action"] == 'c' || $_POST['e'] == 'playlist')){
+                    if(isset($_GET["action"]) && ($_GET["action"] == 'c' || (isset($_POST['e']) && $_POST['e'] == 'playlist'))){
                         ?>
                             <form method="post" action="">
                         <?php
@@ -123,11 +123,7 @@ function leads_gallery_page()
                             </form>  
                         <?php
                     }
-                    
-                    elseif(isset($_GET["action"]) && ($_GET["action"] == "d")){
-                        /* Delete */
-                    }
-                    
+                                        
                     else{
                         /* List */
                         settings_fields("list_section");
@@ -177,7 +173,7 @@ function leads_gallery_display_options()
             case "leads-gallery":
                 /* Playlist Youtube */
                 
-                if(isset($_GET["action"]) && ($_GET["action"] == 'c' || $_POST['e'] == 'playlist')){
+                if(isset($_GET["action"]) && ($_GET["action"] == 'c' || (isset($_POST['e']) && $_POST['e'] == 'playlist'))){
                     
                     add_settings_section("playlist_section", __('Youtube Playlist', 'leads-gallery'), "leads_gallery_display_playlist_description", "leads-gallery");
 
@@ -338,8 +334,8 @@ function leads_gallery_display_playlists()
         ?>
             <tr>
                 <td>
-                    <a href="?page=leads-gallery&action=d&id=<?php echo $row->id;?>">
-                        <img src="<?php echo '../wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/img/icon-delete.png'; ?>" alt="<?php _e('Delete', 'leads-gallery'); ?> ?>"/>
+                    <a href="?page=leads-gallery&action=d&id=<?php echo $row->id;?>" class="delete" data-text="<?php _e('Are you sure about this exclusion?', 'leads-gallery');?>">
+                        <img src="<?php echo '../wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/img/icon-delete.png'; ?>" alt="<?php _e('Delete', 'leads-gallery'); ?>"/>
                     </a>
                 </td>
                 <td>

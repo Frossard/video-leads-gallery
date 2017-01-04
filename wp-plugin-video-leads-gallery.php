@@ -11,7 +11,6 @@
  * Domain Path: languages/
  */
 
-# Verificação de segurança
 if(!defined('ABSPATH')){
     die(__('Access Denied', 'leads-gallery'));
 }
@@ -25,7 +24,7 @@ function leads_gallery_load_session()
     }
 }
 
-# Habilitando a tradução
+# Enable traduction
 function leads_gallery_load_textdomain() {
     load_plugin_textdomain('leads-gallery', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 }
@@ -66,3 +65,12 @@ function leads_gallery_load_assets()
 add_action( 'wp_enqueue_scripts', 'leads_gallery_load_assets' );
 
 add_shortcode('video_leads_gallery', 'leads_gallery_shortcode');
+
+
+function leads_gallery_load_admin_script()
+{
+    wp_register_script( 'video-leads-gallery-admin', '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/js/video-leads-gallery-admin.js', array('jquery'), '1.0.0', true );
+    wp_enqueue_script('video-leads-gallery-admin');
+}
+
+add_action( 'admin_enqueue_scripts', 'leads_gallery_load_admin_script' );

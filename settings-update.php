@@ -12,7 +12,13 @@ if(isset($_POST['e']) && $_POST['e'] == 'playlist'){
         $leads_gallery_message = leads_gallery_playlist_action($_POST);
 }
 
-if(isset($_GET['id'])){
+if((isset($_GET['id']) && isset($_GET['action'])) && ($_GET['action'] == 'd')){
+    
+    leads_gallery_playlist_delete($_GET['id']);
+    $leads_gallery_message = __('The playlist was deleted successfully!', 'leads-gallery');
+}
+
+elseif(isset($_GET['id'])){
     $leads_gallery_playlist = leads_gallery_playlist_recoverId($_GET['id']);
 }
 
@@ -211,6 +217,12 @@ function leads_gallery_playlist_update($playlist)
 	), 
         array( '%d' ) 
     );
+}
+
+function leads_gallery_playlist_delete($id)
+{
+    global $wpdb;
+    $wpdb->delete( 'wp_leads_playlists', array( 'ID' => $id ) );
 }
 
 function leads_gallery_facebook_insert($fb)
