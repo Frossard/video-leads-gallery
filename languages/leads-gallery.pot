@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-04 17:17+0000\n"
+"POT-Creation-Date: 2017-01-04 18:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -113,99 +113,107 @@ msgstr ""
 msgid "Height*"
 msgstr ""
 
-#: settings.php:189
+#: settings.php:189 settings.php:338
+msgid "Description"
+msgstr ""
+
+#: settings.php:192
 msgid "Enable Leads Captation"
 msgstr ""
 
-#: settings.php:194
+#: settings.php:197
 msgid "Youtube Playlists"
 msgstr ""
 
-#: settings.php:201
+#: settings.php:204
 msgid "Captation settings"
 msgstr ""
 
-#: settings.php:203
+#: settings.php:206
 msgid "Facebook App ID*"
 msgstr ""
 
-#: settings.php:208
+#: settings.php:211
 msgid "Registered Leads"
 msgstr ""
 
-#: settings.php:218
+#: settings.php:221
 msgid "This is the Youtube playlists registered, copy the shortcode to use."
 msgstr ""
 
-#: settings.php:222
+#: settings.php:225
 msgid ""
 "First it's necessary set the Youtube playlist and it's vídeo width and "
 "height."
 msgstr ""
 
-#: settings.php:240 settings.php:248
+#: settings.php:243 settings.php:251
 msgid "(You can set 100% to)"
 msgstr ""
 
-#: settings.php:256
+#: settings.php:259
+msgid "(Used only for information)"
+msgstr ""
+
+#: settings.php:267
 msgid "Yes"
 msgstr ""
 
-#: settings.php:263
+#: settings.php:274
 msgid ""
 "After enabled leads captation, it's necessary set the Facebook ID for "
 "Facebook login app."
 msgstr ""
 
-#: settings.php:271
+#: settings.php:282
 msgid "(Get on Facebook Login App)"
 msgstr ""
 
-#: settings.php:278
+#: settings.php:289
 msgid "This is the registered leads until today."
 msgstr ""
 
-#: settings.php:291
+#: settings.php:302
 msgid "Name"
 msgstr ""
 
-#: settings.php:292
+#: settings.php:303
 msgid "Email"
 msgstr ""
 
-#: settings.php:293
+#: settings.php:304
 msgid "Created At"
 msgstr ""
 
-#: settings.php:320
+#: settings.php:331
 msgid "New Playlist"
 msgstr ""
 
-#: settings.php:327
+#: settings.php:339
 msgid "Shortcode"
 msgstr ""
 
-#: settings.php:328
+#: settings.php:340
 msgid "Lead Captation Status"
 msgstr ""
 
-#: settings.php:338
+#: settings.php:350
 msgid "Are you sure about this exclusion?"
 msgstr ""
 
-#: settings.php:339
+#: settings.php:351
 msgid "Delete"
 msgstr ""
 
-#: settings.php:344
+#: settings.php:356
 msgid "Edit"
 msgstr ""
 
-#: settings.php:352
+#: settings.php:367
 msgid "Enabled"
 msgstr ""
 
-#: settings.php:352
+#: settings.php:367
 msgid "Disabled"
 msgstr ""
 
