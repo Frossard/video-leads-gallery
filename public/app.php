@@ -35,21 +35,25 @@ function my_action_callback()
 # Shotcode
 function leads_gallery_shortcode($attrs)
 {    
-    global $leads_gallery_config;
-    
-    $embed = leads_gallery_getValue_base64($leads_gallery_config, 'ds_embed');
-    $largura = leads_gallery_getValue($leads_gallery_config, 'ds_largura');
-    $altura = leads_gallery_getValue($leads_gallery_config, 'ds_altura');
-    
-    $is_lead = leads_gallery_getValue($leads_gallery_config, 'fl_leads');
-    $fb_id = leads_gallery_getValue($leads_gallery_config, 'id_fb');
+    global $leads_gallery_playlist;
+    global $leads_gallery_facebook;
     
     extract( shortcode_atts(array(
+        'id' => '',
         'style' => ''
     ), $attrs));
     
+    $leads_gallery_playlist = leads_gallery_playlist_recoverId($id);
+    
+    $embed = leads_gallery_getValue_base64($leads_gallery_playlist, 'ds_embed');
+    $width = leads_gallery_getValue($leads_gallery_playlist, 'ds_width');
+    $height = leads_gallery_getValue($leads_gallery_playlist, 'ds_height');
+    $is_lead = leads_gallery_getValue($leads_gallery_playlist, 'fl_leads');
+    $id_facebook = leads_gallery_getValue($leads_gallery_facebook, 'id_facebook');
+    
+        
     #custom style from user
-    $style = 'width:' . $largura . 'px; height:' . $altura . 'px; ' . $style;
+    $style = 'width: ' . $width . '; height: ' . $height . '; ' . $style;
     
     #Template for embed without lead capture
     $template = file_get_contents(plugin_dir_url( __FILE__ ) . 'templates/default.html');
@@ -66,7 +70,7 @@ function leads_gallery_shortcode($attrs)
         #Scripts from Facebook API
         $script_fb = file_get_contents(plugin_dir_url( __FILE__ ) . 'templates/fb.html');
         #Replacing keywords
-        $script_fb = str_replace(array('#FB_ID#', '#LANG#', '#AJAX#'), array($fb_id, __('en_US', 'leads-gallery'), leads_gallery_cadastro_ajax()), $script_fb);
+        $script_fb = str_replace(array('#FB_ID#', '#LANG#', '#AJAX#'), array($id_facebook, __('en_US', 'leads-gallery'), leads_gallery_cadastro_ajax()), $script_fb);
         
         $template = str_replace('#LEADS#', $leads, $template);
         $template .= $script_fb;
@@ -99,7 +103,7 @@ function leads_gallery_insert_leads($lead)
             array( 
                 'ds_name' => $lead->ds_name, 
                 'ds_email' => $lead->ds_email,
-                'dt_cadastro' => date('Y-m-d h:i:s')
+                'dt_created' => date('Y-m-d h:i:s')
             ), 
             array( 
                 '%s', 

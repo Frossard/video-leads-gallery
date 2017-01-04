@@ -62,15 +62,16 @@ function leads_gallery_load_assets()
     wp_enqueue_script('video-leads-gallery');
 }
 
-add_action( 'wp_enqueue_scripts', 'leads_gallery_load_assets' );
-
-add_shortcode('video_leads_gallery', 'leads_gallery_shortcode');
-
-
 function leads_gallery_load_admin_script()
 {
+    wp_enqueue_style( 'video-leads-gallery-admin', '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/css/video-leads-gallery-admin.css' );
+    
     wp_register_script( 'video-leads-gallery-admin', '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/js/video-leads-gallery-admin.js', array('jquery'), '1.0.0', true );
     wp_enqueue_script('video-leads-gallery-admin');
 }
 
 add_action( 'admin_enqueue_scripts', 'leads_gallery_load_admin_script' );
+
+add_action( 'wp_enqueue_scripts', 'leads_gallery_load_assets' );
+
+add_shortcode('video_leads_gallery', 'leads_gallery_shortcode');

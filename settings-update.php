@@ -44,7 +44,7 @@ function leads_gallery_playlist_action($post)
     {
         leads_gallery_playlist_update($playlist);
         
-        $message = __('Playlist updated successfully! Get the shortcode <strong>[video_leads_gallery_%d]</strong> to use. You can set style element for this shortcode, follow the example: <i>[video_leads_gallery_%d style="width: 100%"]</i>', 'leads-gallery');
+        $message = __('Playlist updated successfully! Get the shortcode <strong>[video_leads_gallery id="%d"]</strong> to use. You can set style element for this shortcode, follow the example: <i>[video_leads_gallery id="%d" style="width: 100%"]</i>', 'leads-gallery');
         $message = str_replace('%d', $playlist->id, $message);
         
     }  else {
@@ -53,7 +53,7 @@ function leads_gallery_playlist_action($post)
         #Recover after insert
         $leads_gallery_playlist = leads_gallery_playlist_recover();
         
-        $message = __('Playlist saved successfully! Get the shortcode <strong>[video_leads_gallery_%d]</strong> to use. You can set style element for this shortcode, follow the example: <i>[video_leads_gallery_%d style="width: 100%"]</i>', 'leads-gallery');
+        $message = __('Playlist saved successfully! Get the shortcode <strong>[video_leads_gallery id="%d"]</strong> to use. You can set style element for this shortcode, follow the example: <i>[video_leads_gallery id="%d" style="width: 100%"]</i>', 'leads-gallery');
         $message = str_replace('%d', $leads_gallery_playlist->id, $message);
     }
     

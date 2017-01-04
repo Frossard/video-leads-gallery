@@ -301,7 +301,7 @@ function leads_gallery_display_table()
             <tr>
                 <td><?php echo $row->ds_name;?></td>
                 <td><?php echo $row->ds_email;?></td>
-                <td><?php echo date_format(date_create($row->dt_cadastro), 'd/m/Y h:m:s');?></td>
+                <td><?php echo date_format(date_create($row->dt_created), 'd/m/Y h:m:s');?></td>
             </tr>
         <?php
         }
@@ -322,7 +322,8 @@ function leads_gallery_display_playlists()
     <table class="wp-list-table widefat fixed striped posts" style="max-width:1000px;">
 	<thead>
             <tr>
-                <th scope="col" class="column-primary" width="40px">&nbsp;</th>
+                <th scope="col" class="column-primary" width="30px">&nbsp;</th>
+                <th scope="col" class="column-primary" width="30px">&nbsp;</th>
                 <th scope="col" class="column-primary"><?php _e('Shortcode', 'leads-gallery'); ?></th>
                 <th scope="col" class="column-primary"><?php _e('Lead Captation Status', 'leads-gallery'); ?></th>
             </tr>
@@ -334,12 +335,17 @@ function leads_gallery_display_playlists()
         ?>
             <tr>
                 <td>
-                    <a href="?page=leads-gallery&action=d&id=<?php echo $row->id;?>" class="delete" data-text="<?php _e('Are you sure about this exclusion?', 'leads-gallery');?>">
+                    <a href="?page=leads-gallery&action=d&id=<?php echo $row->id;?>" class="delete video-leads-gallery-icon" data-text="<?php _e('Are you sure about this exclusion?', 'leads-gallery');?>">
                         <img src="<?php echo '../wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/img/icon-delete.png'; ?>" alt="<?php _e('Delete', 'leads-gallery'); ?>"/>
                     </a>
                 </td>
                 <td>
-                    <a href="?page=leads-gallery&action=c&id=<?php echo $row->id;?>">[video_leads_gallery_<?php echo $row->id;?>]</a>
+                    <a href="?page=leads-gallery&action=c&id=<?php echo $row->id;?>" class="video-leads-gallery-icon">
+                        <img src="<?php echo '../wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/img/icon-edit.png'; ?>" alt="<?php _e('Edit', 'leads-gallery'); ?>"/>
+                    </a>
+                </td>
+                <td>
+                    [video_leads_gallery id="<?php echo $row->id;?>"]
                 </td>
                 <td>
                     <a href="?page=leads-gallery&action=c&id=<?php echo $row->id;?>">
