@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-29 13:48+0000\n"
+"POT-Creation-Date: 2017-01-04 17:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,138 +15,205 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/"
 
 #: install.php:4 settings-update.php:3 settings.php:3
-#: wp-plugin-video-leads-gallery.php:16 public/app.php:3
+#: wp-plugin-video-leads-gallery.php:15 public/app.php:3
 msgid "Access Denied"
 msgstr ""
 
-#: settings-update.php:29
-msgid "Settings updated successfully!"
+#: settings-update.php:18
+msgid "The playlist was deleted successfully!"
 msgstr ""
 
-#: settings-update.php:35
-msgid "Settings saved successfully!"
+#: settings-update.php:47
+msgid ""
+"Playlist updated successfully! Get the shortcode <strong>"
+"[video_leads_gallery id=\"%d\"]</strong> to use. You can set style element "
+"for this shortcode, follow the example: <i>[video_leads_gallery id=\"%d\" "
+"style=\"width: 100%\"]</i>"
 msgstr ""
 
-#: settings-update.php:44
+#: settings-update.php:56
+msgid ""
+"Playlist saved successfully! Get the shortcode <strong>[video_leads_gallery "
+"id=\"%d\"]</strong> to use. You can set style element for this shortcode, "
+"follow the example: <i>[video_leads_gallery id=\"%d\" style=\"width: 100%\"]"
+"</i>"
+msgstr ""
+
+#: settings-update.php:73
+msgid "Facebook settings updated successfully!"
+msgstr ""
+
+#: settings-update.php:79
+msgid "Facebook settings saved successfully!"
+msgstr ""
+
+#: settings-update.php:88
 msgid ""
 "This settings cannot be saved, the <strong>Playlist Embed</strong> field is "
 "required"
 msgstr ""
 
-#: settings-update.php:47
+#: settings-update.php:91
 msgid ""
 "This settings cannot be saved, the <strong>Width</strong> field is required"
 msgstr ""
 
-#: settings-update.php:50
+#: settings-update.php:94
 msgid ""
 "This settings cannot be saved, the <strong>Height</strong> field is required"
 msgstr ""
 
-#: settings.php:35 settings.php:44 settings.php:53
-msgid "Dismiss the notice"
-msgstr ""
-
-#: settings.php:51
+#: settings-update.php:102
 msgid ""
-"Use this shortcode <strong>[video_leads_gallery "
-"style=\"your_optional_custom_style_here\"]</strong> to enable Video Leads "
-"Gallery!"
+"This facebook settings cannot be saved, the <strong>Facebook App ID</strong> "
+"field is required"
 msgstr ""
 
-#: settings.php:74
-msgid "Settings"
+#: settings.php:21 settings.php:22 settings.php:98
+msgid "Playlists"
 msgstr ""
 
-#: settings.php:75
+#: settings.php:30 settings.php:31 settings.php:99
+msgid "Facebook Settings"
+msgstr ""
+
+#: settings.php:39 settings.php:40 settings.php:100
 msgid "List of Leads"
 msgstr ""
 
-#: settings.php:95
+#: settings.php:62 settings.php:71
+msgid "Dismiss the notice"
+msgstr ""
+
+#: settings.php:117 settings.php:143
 msgid "(*) Required Fields"
 msgstr ""
 
-#: settings.php:117 settings.php:150
+#: settings.php:120
+msgid "Save Updates"
+msgstr ""
+
+#: settings.php:121
+msgid "Back"
+msgstr ""
+
+#: settings.php:178
 msgid "Youtube Playlist"
 msgstr ""
 
-#: settings.php:119 settings.php:152
+#: settings.php:180
 msgid "Playlist Embed*"
 msgstr ""
 
-#: settings.php:122 settings.php:155
+#: settings.php:183
 msgid "Width*"
 msgstr ""
 
-#: settings.php:125 settings.php:158
+#: settings.php:186
 msgid "Height*"
 msgstr ""
 
-#: settings.php:128 settings.php:161
+#: settings.php:189
 msgid "Enable Leads Captation"
 msgstr ""
 
-#: settings.php:133 settings.php:166
+#: settings.php:194
+msgid "Youtube Playlists"
+msgstr ""
+
+#: settings.php:201
 msgid "Captation settings"
 msgstr ""
 
-#: settings.php:135 settings.php:168
-msgid "Facebook App ID"
+#: settings.php:203
+msgid "Facebook App ID*"
 msgstr ""
 
-#: settings.php:138 settings.php:171
-msgid "Facebook App Secret Key"
-msgstr ""
-
-#: settings.php:143
+#: settings.php:208
 msgid "Registered Leads"
 msgstr ""
 
-#: settings.php:180
+#: settings.php:218
+msgid "This is the Youtube playlists registered, copy the shortcode to use."
+msgstr ""
+
+#: settings.php:222
 msgid ""
 "First it's necessary set the Youtube playlist and it's vídeo width and "
 "height."
 msgstr ""
 
-#: settings.php:196 settings.php:204
-msgid "(Only numbers)"
-msgstr ""
-
-#: settings.php:212
-msgid "Yes"
-msgstr ""
-
-#: settings.php:219
-msgid ""
-"After enabled leads captation, it's necessary set the Facebook keys for "
-"Facebook login app."
-msgstr ""
-
-#: settings.php:226 settings.php:234
-msgid "(Get on Facebook Login App)"
-msgstr ""
-
-#: settings.php:242
-msgid "This is the registered leads until today."
-msgstr ""
-
-#: settings.php:255
-msgid "Name"
+#: settings.php:240 settings.php:248
+msgid "(You can set 100% to)"
 msgstr ""
 
 #: settings.php:256
+msgid "Yes"
+msgstr ""
+
+#: settings.php:263
+msgid ""
+"After enabled leads captation, it's necessary set the Facebook ID for "
+"Facebook login app."
+msgstr ""
+
+#: settings.php:271
+msgid "(Get on Facebook Login App)"
+msgstr ""
+
+#: settings.php:278
+msgid "This is the registered leads until today."
+msgstr ""
+
+#: settings.php:291
+msgid "Name"
+msgstr ""
+
+#: settings.php:292
 msgid "Email"
 msgstr ""
 
-#: settings.php:257
+#: settings.php:293
 msgid "Created At"
+msgstr ""
+
+#: settings.php:320
+msgid "New Playlist"
+msgstr ""
+
+#: settings.php:327
+msgid "Shortcode"
+msgstr ""
+
+#: settings.php:328
+msgid "Lead Captation Status"
+msgstr ""
+
+#: settings.php:338
+msgid "Are you sure about this exclusion?"
+msgstr ""
+
+#: settings.php:339
+msgid "Delete"
+msgstr ""
+
+#: settings.php:344
+msgid "Edit"
+msgstr ""
+
+#: settings.php:352
+msgid "Enabled"
+msgstr ""
+
+#: settings.php:352
+msgid "Disabled"
 msgstr ""
 
 #: public/app.php:26
 msgid "Oops! Something wrong happened."
 msgstr ""
 
-#: public/app.php:69
+#: public/app.php:73
 msgid "en_US"
 msgstr ""
 
