@@ -185,6 +185,9 @@ function leads_gallery_display_options()
 
                     add_settings_field("ds_height", __('Height*', 'leads-gallery'), "leads_gallery_display_height_form_element", "leads-gallery", "playlist_section");
                     register_setting("playlist_section", "ds_height");
+                    
+                    add_settings_field("ds_name", __('Description', 'leads-gallery'), "leads_gallery_display_description_form_element", "leads-gallery", "playlist_section");
+                    register_setting("playlist_section", "ds_name");
 
                     add_settings_field("fl_leads", __('Enable Leads Captation', 'leads-gallery'), "leads_gallery_display_lead_form_element", "leads-gallery", "playlist_section");
                     register_setting("playlist_section", "fl_leads");
@@ -246,6 +249,14 @@ function leads_gallery_display_height_form_element()
     global $leads_gallery_playlist;
     ?>
         <input type="text" name="ds_height" id="ds_height" value="<?php echo leads_gallery_getValue($leads_gallery_playlist, 'ds_height'); ?>" placeholder="Ex.: 315px" /> <?php _e('(You can set 100% to)', 'leads-gallery');?>
+    <?php
+}
+
+function leads_gallery_display_description_form_element()
+{
+    global $leads_gallery_playlist;
+    ?>
+        <input type="text" name="ds_name" id="ds_name" value="<?php echo leads_gallery_getValue($leads_gallery_playlist, 'ds_name'); ?>" style="min-width: 400px;"/> <?php _e('(Used only for information)', 'leads-gallery');?>
     <?php
 }
 
@@ -324,6 +335,7 @@ function leads_gallery_display_playlists()
             <tr>
                 <th scope="col" class="column-primary" width="30px">&nbsp;</th>
                 <th scope="col" class="column-primary" width="30px">&nbsp;</th>
+                <th scope="col" class="column-primary"><?php _e('Description', 'leads-gallery'); ?></th>
                 <th scope="col" class="column-primary"><?php _e('Shortcode', 'leads-gallery'); ?></th>
                 <th scope="col" class="column-primary"><?php _e('Lead Captation Status', 'leads-gallery'); ?></th>
             </tr>
@@ -343,6 +355,9 @@ function leads_gallery_display_playlists()
                     <a href="?page=leads-gallery&action=c&id=<?php echo $row->id;?>" class="video-leads-gallery-icon">
                         <img src="<?php echo '../wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/assets/img/icon-edit.png'; ?>" alt="<?php _e('Edit', 'leads-gallery'); ?>"/>
                     </a>
+                </td>
+                <td>
+                    <a href="?page=leads-gallery&action=c&id=<?php echo $row->id;?>"><?php echo $row->ds_name;?></a>
                 </td>
                 <td>
                     [video_leads_gallery id="<?php echo $row->id;?>"]

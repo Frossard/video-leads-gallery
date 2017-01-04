@@ -113,6 +113,7 @@ function leads_gallery_playlist_setObj($post)
     $playlist->ds_width = addslashes($post['ds_width']);
     $playlist->ds_height = addslashes($post['ds_height']);
     $playlist->fl_leads = isset($post['fl_leads']) ? addslashes($post['fl_leads']) : 0;
+    $playlist->ds_name = addslashes($post['ds_name']);
     
     return $playlist;
 }
@@ -178,6 +179,7 @@ function leads_gallery_playlist_insert($playlist)
     $wpdb->insert( 
 	'wp_leads_playlists', 
 	array( 
+            'ds_name' => !empty($playlist->ds_name) ? $playlist->ds_name : NULL,
             'ds_embed' => !empty($playlist->ds_embed) ? $playlist->ds_embed : NULL,
             'ds_width' => !empty($playlist->ds_width) ? $playlist->ds_width : NULL,
             'ds_height' => !empty($playlist->ds_height) ? $playlist->ds_height : NULL,
@@ -185,6 +187,7 @@ function leads_gallery_playlist_insert($playlist)
             'dt_created' => date('Y-m-d h:i:s'),
 	), 
 	array( 
+            '%s',
             '%s', 
             '%s',
             '%s',
@@ -201,6 +204,7 @@ function leads_gallery_playlist_update($playlist)
     $wpdb->update( 
         'wp_leads_playlists', 
         array( 
+            'ds_name' => !empty($playlist->ds_name) ? $playlist->ds_name : NULL,
             'ds_embed' => !empty($playlist->ds_embed) ? $playlist->ds_embed : NULL,
             'ds_width' => !empty($playlist->ds_width) ? $playlist->ds_width : NULL,
             'ds_height' => !empty($playlist->ds_height) ? $playlist->ds_height : NULL,
@@ -209,6 +213,7 @@ function leads_gallery_playlist_update($playlist)
 	), 
         array( 'ID' => $playlist->id ), 
         array( 
+            '%s',
             '%s', 
             '%s',
             '%s',

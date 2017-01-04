@@ -23,6 +23,7 @@ function leads_gallery_install ()
         
     CREATE TABLE " . $wpdb->prefix . "leads_playlists (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
+        ds_name text,
         ds_embed text NOT NULL,
         ds_width varchar(55),
         ds_height varchar(55),
