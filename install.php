@@ -14,23 +14,29 @@ function leads_gallery_install ()
     $installed_ver = get_option( "leads_gallery_version" );
     
     $charset_collate = $wpdb->get_charset_collate();
-
-    $sql = "CREATE TABLE " . $wpdb->prefix . "leads_config (
+    
+    $sql = "CREATE TABLE " . $wpdb->prefix . "leads_facebook (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
-        ds_embed text NOT NULL,
-        ds_largura varchar(55),
-        ds_altura varchar(55),
-        fl_leads boolean,
-        id_fb varchar(250),
-        ds_fb_key text,
+        id_facebook varchar(250) NOT NULL,
         PRIMARY KEY  (id)
     ) $charset_collate;
         
+    CREATE TABLE " . $wpdb->prefix . "leads_playlists (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        ds_embed text NOT NULL,
+        ds_width varchar(55),
+        ds_height varchar(55),
+        dt_created DATETIME,
+        fl_leads boolean,
+        PRIMARY KEY  (id)
+    ) $charset_collate;
+
     CREATE TABLE " . $wpdb->prefix . "leads_list (
         id bigint(20) NOT NULL AUTO_INCREMENT,
         ds_name varchar(250),
         ds_email varchar(300) NOT NULL,
-        dt_cadastro DATETIME,
+        dt_created DATETIME,
+        fl_active boolean,
         PRIMARY KEY  (id)
     ) $charset_collate;";
     
