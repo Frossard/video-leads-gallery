@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-04 18:41+0000\n"
+"POT-Creation-Date: 2017-01-05 16:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,9 +14,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: install.php:4 settings-update.php:3 settings.php:3
+#: excel.php:3 install.php:4 settings-update.php:3 settings.php:3
 #: wp-plugin-video-leads-gallery.php:15 public/app.php:3
 msgid "Access Denied"
+msgstr ""
+
+#: excel.php:29 settings.php:304
+msgid "Name"
+msgstr ""
+
+#: excel.php:29 settings.php:305
+msgid "Email"
+msgstr ""
+
+#: excel.php:29 settings.php:306
+msgid "Created At"
 msgstr ""
 
 #: settings-update.php:18
@@ -101,20 +113,20 @@ msgstr ""
 msgid "Youtube Playlist"
 msgstr ""
 
-#: settings.php:180
-msgid "Playlist Embed*"
+#: settings.php:180 settings.php:340
+msgid "Description"
 msgstr ""
 
 #: settings.php:183
-msgid "Width*"
+msgid "Playlist Embed*"
 msgstr ""
 
 #: settings.php:186
-msgid "Height*"
+msgid "Width*"
 msgstr ""
 
-#: settings.php:189 settings.php:338
-msgid "Description"
+#: settings.php:189
+msgid "Height*"
 msgstr ""
 
 #: settings.php:192
@@ -173,47 +185,39 @@ msgstr ""
 msgid "This is the registered leads until today."
 msgstr ""
 
-#: settings.php:302
-msgid "Name"
+#: settings.php:299
+msgid "Generate .CSV file"
 msgstr ""
 
-#: settings.php:303
-msgid "Email"
-msgstr ""
-
-#: settings.php:304
-msgid "Created At"
-msgstr ""
-
-#: settings.php:331
+#: settings.php:333
 msgid "New Playlist"
 msgstr ""
 
-#: settings.php:339
+#: settings.php:341
 msgid "Shortcode"
 msgstr ""
 
-#: settings.php:340
+#: settings.php:342
 msgid "Lead Captation Status"
 msgstr ""
 
-#: settings.php:350
+#: settings.php:352
 msgid "Are you sure about this exclusion?"
 msgstr ""
 
-#: settings.php:351
+#: settings.php:353
 msgid "Delete"
 msgstr ""
 
-#: settings.php:356
+#: settings.php:358
 msgid "Edit"
 msgstr ""
 
-#: settings.php:367
+#: settings.php:369
 msgid "Enabled"
 msgstr ""
 
-#: settings.php:367
+#: settings.php:369
 msgid "Disabled"
 msgstr ""
 

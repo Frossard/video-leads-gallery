@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-04 16:42-0200\n"
-"PO-Revision-Date: 2017-01-04 16:45-0200\n"
+"POT-Creation-Date: 2017-01-05 14:41-0200\n"
+"PO-Revision-Date: 2017-01-05 14:43-0200\n"
 "Language-Team: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
@@ -13,10 +13,22 @@ msgstr ""
 "Last-Translator: \n"
 "Language: pt_BR\n"
 
-#: install.php:4 settings-update.php:3 settings.php:3
+#: excel.php:3 install.php:4 settings-update.php:3 settings.php:3
 #: wp-plugin-video-leads-gallery.php:15 public/app.php:3
 msgid "Access Denied"
 msgstr "Acesso Negado"
+
+#: excel.php:29 settings.php:304
+msgid "Name"
+msgstr "Nome"
+
+#: excel.php:29 settings.php:305
+msgid "Email"
+msgstr "E-mail"
+
+#: excel.php:29 settings.php:306
+msgid "Created At"
+msgstr "Data do Cadastro"
 
 #: settings-update.php:18
 msgid "The playlist was deleted successfully!"
@@ -116,21 +128,21 @@ msgstr "Voltar"
 msgid "Youtube Playlist"
 msgstr "Lista de reprodução do Youtube"
 
-#: settings.php:180
+#: settings.php:180 settings.php:340
+msgid "Description"
+msgstr "Descrição"
+
+#: settings.php:183
 msgid "Playlist Embed*"
 msgstr "Lista de reprodução incorporada*"
 
-#: settings.php:183
+#: settings.php:186
 msgid "Width*"
 msgstr "Largura*"
 
-#: settings.php:186
+#: settings.php:189
 msgid "Height*"
 msgstr "Altura*"
-
-#: settings.php:189 settings.php:338
-msgid "Description"
-msgstr "Descrição"
 
 #: settings.php:192
 msgid "Enable Leads Captation"
@@ -194,47 +206,39 @@ msgstr "(Obter através do aplicativo do Facebook)"
 msgid "This is the registered leads until today."
 msgstr "Este é o registro de leads cadastrados até hoje"
 
-#: settings.php:302
-msgid "Name"
-msgstr "Nome"
+#: settings.php:299
+msgid "Generate .CSV file"
+msgstr "Gerar arquivo .CSV"
 
-#: settings.php:303
-msgid "Email"
-msgstr "E-mail"
-
-#: settings.php:304
-msgid "Created At"
-msgstr "Data do Cadastro"
-
-#: settings.php:331
+#: settings.php:333
 msgid "New Playlist"
 msgstr "Nova Lista de Reprodução"
 
-#: settings.php:339
+#: settings.php:341
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: settings.php:340
+#: settings.php:342
 msgid "Lead Captation Status"
 msgstr "Status da Captação de Leads"
 
-#: settings.php:350
+#: settings.php:352
 msgid "Are you sure about this exclusion?"
 msgstr "Tem certeza que deseja excluir o registro?"
 
-#: settings.php:351
+#: settings.php:353
 msgid "Delete"
 msgstr "Excluir"
 
-#: settings.php:356
+#: settings.php:358
 msgid "Edit"
 msgstr "Alterar"
 
-#: settings.php:367
+#: settings.php:369
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: settings.php:367
+#: settings.php:369
 msgid "Disabled"
 msgstr "Desabilitado"
 
