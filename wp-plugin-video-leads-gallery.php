@@ -42,6 +42,7 @@ $leads_gallery_version = '0.0.3';
 require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/install.php');
 
 #Ambiente no Wp-Admin
+require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/excel.php');
 require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/settings-update.php');
 require_once (ABSPATH . '/wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/settings.php');
 

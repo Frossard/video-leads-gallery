@@ -176,7 +176,10 @@ function leads_gallery_display_options()
                 if(isset($_GET["action"]) && ($_GET["action"] == 'c' || (isset($_POST['e']) && $_POST['e'] == 'playlist'))){
                     
                     add_settings_section("playlist_section", __('Youtube Playlist', 'leads-gallery'), "leads_gallery_display_playlist_description", "leads-gallery");
-
+                    
+                    add_settings_field("ds_name", __('Description', 'leads-gallery'), "leads_gallery_display_description_form_element", "leads-gallery", "playlist_section");
+                    register_setting("playlist_section", "ds_name");
+                    
                     add_settings_field("ds_embed", __('Playlist Embed*', 'leads-gallery'), "leads_gallery_display_embed_form_element", "leads-gallery", "playlist_section");
                     register_setting("playlist_section", "ds_embed");
 
@@ -185,9 +188,6 @@ function leads_gallery_display_options()
 
                     add_settings_field("ds_height", __('Height*', 'leads-gallery'), "leads_gallery_display_height_form_element", "leads-gallery", "playlist_section");
                     register_setting("playlist_section", "ds_height");
-                    
-                    add_settings_field("ds_name", __('Description', 'leads-gallery'), "leads_gallery_display_description_form_element", "leads-gallery", "playlist_section");
-                    register_setting("playlist_section", "ds_name");
 
                     add_settings_field("fl_leads", __('Enable Leads Captation', 'leads-gallery'), "leads_gallery_display_lead_form_element", "leads-gallery", "playlist_section");
                     register_setting("playlist_section", "fl_leads");
@@ -231,7 +231,7 @@ function leads_gallery_display_embed_form_element()
     ?>
         <input type="hidden" name="e" value="playlist"/>
         <input type="hidden" name="id" value="<?php echo leads_gallery_getValue($leads_gallery_playlist, 'id'); ?>"/>
-        <input type="text" name="ds_embed" id="ds_embed" style="width: 100%;" value='<?php echo leads_gallery_getValue_base64($leads_gallery_playlist, 'ds_embed'); ?>' />
+        <input type="text" name="ds_embed" id="ds_embed" style="width: 80%;" value='<?php echo leads_gallery_getValue_base64($leads_gallery_playlist, 'ds_embed'); ?>' />
         <i><xmp>Ex.: <iframe width="560" height="315" src="https://www.youtube.com/embed/r_vt3of4ukw?list=PLMVTEBBvR8MHZ2CKumJEIz3mnNeCnq2QO" frameborder="0" allowfullscreen></iframe></xmp></i>
     <?php
 }
@@ -294,8 +294,10 @@ function leads_gallery_display_table()
 {
     global $wpdb;
     
-    $rows = $wpdb->get_results( "SELECT * FROM wp_leads_list ORDER BY id DESC" );
+    $rows = $wpdb->get_results( "SELECT * FROM wp_leads_list WHERE fl_active = '1' ORDER BY id DESC" );
     ?>
+    <a href="?page=leads-gallery-list&action=p" class="button" style="background-color: #5bc0de; border-color: #46b8da; color: #fff; margin: 10px 0px 20px;"><?php _e('Generate .CSV file', 'leads-gallery'); ?></a>
+    
     <table class="wp-list-table widefat fixed striped posts" style="max-width:1000px;">
 	<thead>
             <tr>

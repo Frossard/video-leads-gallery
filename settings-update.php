@@ -273,3 +273,9 @@ function leads_gallery_getValue_base64($a, $attr){
         return base64_decode($a->$attr);
     return '';
 }
+
+
+/* Excel */
+if(isset($_GET['action']) && $_GET['action'] == 'p'){
+    export_csv();
+}
