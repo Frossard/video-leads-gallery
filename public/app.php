@@ -227,8 +227,30 @@ function leads_gallery_verify_token($token)
     {
         foreach ($rows as $row)
         {
-            if(!empty($row->id)){ return true;}
+            if(!empty($row->id))
+            { 
+                lead_gallery_active_email($row->id);
+                
+                return true;
+            }
         }
     }
     return false;
+}
+
+function lead_gallery_active_email($id)
+{
+    global $wpdb;
+    
+    $wpdb->update( 
+        'wp_leads_list', 
+        array( 
+            'fl_active' => 1
+        ), 
+        array( 'ID' => $id ), 
+        array( 
+            '%d'
+        ), 
+        array( '%d' ) 
+    );
 }
