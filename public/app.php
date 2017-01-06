@@ -4,26 +4,40 @@ if(!defined('ABSPATH')){
 }
 
 /* Ajax INICIO */
-add_action( 'wp_ajax_video_leads_gallery', 'my_action_callback' );
-add_action( 'wp_ajax_nopriv_video_leads_gallery', 'my_action_callback' );
+add_action( 'wp_ajax_video_leads_gallery', 'leads_gallery_my_action_callback' );
+add_action( 'wp_ajax_nopriv_video_leads_gallery', 'leads_gallery_my_action_callback' );
 
-function my_action_callback()
+function leads_gallery_my_action_callback()
 {
     $lead = leads_gallery_setObj_lead($_POST);
     
     if(leads_gallery_insert_leads($lead)){
         
-        $_SESSION['video_leads_gallery_register'] = 'OK';
+        #Cadastro por e-mail
+        if($lead->fl_origin == 2){
+            #Token to verify
+            $token = leads_gallery_generate_token($lead);
+            
+            #Send activation email
+            leads_gallery_send_email($lead, $token, $_POST['path']);
+            
+        }else{
+            #Cadastro por Facebook
+            $_SESSION['video_leads_gallery_register'] = 'OK';
+        }
         
         $json = array(
-            'retorno' => 0
+            'return' => 0,
+            'origin' => $lead->fl_origin
         );
         
     }else{
+        /* Se entrar aqui é porque já está cadastrado. */
+        $_SESSION['video_leads_gallery_register'] = 'OK';
         
         $json = array(
-            'retorno' => 1,
-            'error' => __('Oops! Something wrong happened.', 'leads-gallery')
+            'return' => 1,
+            'error' => __('E-mail already registered!', 'leads-gallery')
         );
     }
     
@@ -42,6 +56,15 @@ function leads_gallery_shortcode($attrs)
         'id' => '',
         'style' => ''
     ), $attrs));
+        
+    #Validando token
+    if(isset($_GET['leads_gallery_token']))
+    {
+        if(leads_gallery_verify_token($_GET['leads_gallery_token']))
+        {
+            $_SESSION['video_leads_gallery_register'] = 'OK';
+        }
+    }
     
     $leads_gallery_playlist = leads_gallery_playlist_recoverId($id);
     
@@ -88,6 +111,7 @@ function leads_gallery_setObj_lead($post)
     
     $lead->ds_name = addslashes($post['name']);
     $lead->ds_email = addslashes($post['email']);
+    $lead->fl_origin = addslashes($post['origin']);
     
     return $lead;
 }
@@ -95,7 +119,7 @@ function leads_gallery_setObj_lead($post)
 function leads_gallery_insert_leads($lead)
 {
     global $wpdb;
-    
+    /* verifico se o lead existe, se existir retorno false */
     if(leads_gallery_insert_verify_lead($lead))
     {
         $wpdb->insert( 
@@ -103,17 +127,21 @@ function leads_gallery_insert_leads($lead)
             array( 
                 'ds_name' => $lead->ds_name, 
                 'ds_email' => $lead->ds_email,
-                'dt_created' => date('Y-m-d h:i:s')
+                'dt_created' => date('Y-m-d h:i:s'),
+                'fl_origin' => $lead->origin
             ), 
             array( 
                 '%s', 
                 '%s',
-                '%s'
+                '%s',
+                '%d'
             ) 
         );
-    }
-    
-    return true;
+        return true;
+        
+    }else{
+        return false;
+    }   
 }
 
 function leads_gallery_insert_verify_lead($lead)
@@ -133,6 +161,7 @@ function leads_gallery_insert_verify_lead($lead)
     return true;
 }
 
+/* Enable on facebook login */
 function leads_gallery_cadastro_ajax()
 {
     return "jQuery.ajax({
@@ -141,13 +170,63 @@ function leads_gallery_cadastro_ajax()
         data: {
             action: 'video_leads_gallery',
             name: response.name,
-            email: response.email
+            email: response.email,
+            origin: 1
         },
         success: function (result) {
             var json = JSON.parse(result);
-            if (json.retorno === 0){
+            if (json.return === 0){
                 jQuery('.video-leads-gallery-middle').fadeOut('slow');
             }
         }
     });";
+}
+
+function leads_gallery_send_email($lead, $token, $path)
+{
+    $sitename = get_bloginfo( 'name' );
+    $subject = __('Register confirmation', 'leads-gallery') . ' - ' . $sitename;
+    
+    $message = __('Please click the link below to complete your registration:', 'leads-gallery') . '<br/><a href="' . $path . '?leads_gallery_token=' . $token . '">' . $path . '</a>';
+    
+    $headers = array('Content-Type: text/html; charset=UTF-8');
+    
+    wp_mail( $lead->ds_email, $subject, $message, $headers );
+}
+
+function leads_gallery_generate_token($lead)
+{
+    global $wpdb;
+    $token = uniqid();
+    
+    $wpdb->update( 
+        'wp_leads_list', 
+        array( 
+            'ds_token' => $token
+	), 
+        array( 'ds_email' => $lead->ds_email ), 
+        array( 
+            '%s'
+	), 
+        array( '%s' ) 
+    );
+    
+    return $token;
+    
+}
+
+function leads_gallery_verify_token($token)
+{
+    global $wpdb;
+    
+    $rows = $wpdb->get_results( "SELECT id FROM wp_leads_list WHERE ds_token = '" . addslashes($token) . "' ORDER BY id DESC" );
+    
+    if(!empty($rows))
+    {
+        foreach ($rows as $row)
+        {
+            if(!empty($row->id)){ return true;}
+        }
+    }
+    return false;
 }

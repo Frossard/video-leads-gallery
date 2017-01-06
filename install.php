@@ -37,7 +37,9 @@ function leads_gallery_install ()
         ds_name varchar(250),
         ds_email varchar(300) NOT NULL,
         dt_created DATETIME,
+        ds_token varchar(250),
         fl_active boolean,
+        fl_origin boolean,
         PRIMARY KEY  (id)
     ) $charset_collate;";
     

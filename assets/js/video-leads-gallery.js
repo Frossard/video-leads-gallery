@@ -61,12 +61,23 @@ function video_leads_gallery_cadastro(name, email)
         data: {
             action: 'video_leads_gallery',
             name: name,
-            email: email
+            email: email,
+            origin: 2,
+            path: window.location.href
         },
         success: function (result) {
             var json = JSON.parse(result);
-            if (json.retorno === 0){
+            if (json.return === 1){
                 jQuery(".video-leads-gallery-middle").fadeOut('slow');
+            }else{
+                if(json.origin === "2"){
+                    jQuery("#video_leads_gallery_message").html(
+                        '<p>Para começar a assistir às<br/> videoaulas gratuitamente, você deve<br/> <strong>confirmar seu endereço de e-mail.</strong></p>'+
+                        '<p class="video-leads-gallery-alert"><span>!</span>Acesse seu e-mail<br/>e siga as instruções</p>'
+                    );
+                }else{
+                    jQuery(".video-leads-gallery-middle").fadeOut('slow');
+                }
             }
         }
     });
