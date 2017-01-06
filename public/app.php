@@ -187,9 +187,11 @@ function leads_gallery_send_email($lead, $token, $path)
     $sitename = get_bloginfo( 'name' );
     $subject = __('Register confirmation', 'leads-gallery') . ' - ' . $sitename;
     
-    $message = __('Please click the link below to complete your registration:', 'leads-gallery') . '<br/><a href="' . $path . '?leads_gallery_token=' . $token . '">' . $path . '</a>';
+    $message = __('Please click the link below to complete your registration:', 'leads-gallery') . '<br/><br/><a href="' . $path . '?leads_gallery_token=' . $token . '">' . $path . '</a>';
     
-    $headers = array('Content-Type: text/html; charset=UTF-8');
+    $headers = array();
+    $headers[] = 'Content-Type: text/html; charset=UTF-8';
+    $headers[] = 'From: ' . $sitename . ' <' . get_bloginfo( 'admin_email' ) . '>';
     
     wp_mail( $lead->ds_email, $subject, $message, $headers );
 }
