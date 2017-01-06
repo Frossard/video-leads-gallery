@@ -128,7 +128,7 @@ function leads_gallery_insert_leads($lead)
                 'ds_name' => $lead->ds_name, 
                 'ds_email' => $lead->ds_email,
                 'dt_created' => date('Y-m-d h:i:s'),
-                'fl_origin' => $lead->origin
+                'fl_origin' => $lead->fl_origin
             ), 
             array( 
                 '%s', 
