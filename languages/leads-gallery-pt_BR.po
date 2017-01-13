@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-05 14:41-0200\n"
-"PO-Revision-Date: 2017-01-05 14:43-0200\n"
+"POT-Creation-Date: 2017-01-13 16:29-0200\n"
+"PO-Revision-Date: 2017-01-13 16:34-0200\n"
 "Language-Team: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
@@ -242,13 +242,21 @@ msgstr "Habilitado"
 msgid "Disabled"
 msgstr "Desabilitado"
 
-#: public/app.php:26
-msgid "Oops! Something wrong happened."
-msgstr "Oops! Aconteceu algum problema."
+#: public/app.php:40
+msgid "E-mail already registered!"
+msgstr "E-mail já cadastrado!"
 
-#: public/app.php:73
+#: public/app.php:96
 msgid "en_US"
 msgstr "pt_BR"
+
+#: public/app.php:188
+msgid "Register confirmation"
+msgstr "Confirmação de cadastro"
+
+#: public/app.php:190
+msgid "Please click the link below to complete your registration:"
+msgstr "Por favor, clique no link abaixo para completar o seu cadastro:"
 
 #. Name of the plugin
 msgid "Video Leads Gallery"

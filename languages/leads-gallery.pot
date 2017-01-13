@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-05 16:40+0000\n"
+"POT-Creation-Date: 2017-01-13 18:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -221,12 +221,20 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
-#: public/app.php:26
-msgid "Oops! Something wrong happened."
+#: public/app.php:40
+msgid "E-mail already registered!"
 msgstr ""
 
-#: public/app.php:73
+#: public/app.php:96
 msgid "en_US"
+msgstr ""
+
+#: public/app.php:188
+msgid "Register confirmation"
+msgstr ""
+
+#: public/app.php:190
+msgid "Please click the link below to complete your registration:"
 msgstr ""
 
 #. Name of the plugin
