@@ -78,8 +78,16 @@ function leads_gallery_shortcode($attrs)
     #custom style from user
     $style = 'width: ' . $width . '; height: ' . $height . '; ' . $style;
     
+    /* SSL File Get Contents */
+    $arrContextOptions = array(
+        "ssl" => array(
+            "verify_peer" => false,
+            "verify_peer_name" => false,
+        ),
+    );
+    
     #Template for embed without lead capture
-    $template = file_get_contents(plugin_dir_url( __FILE__ ) . 'templates/default.html');
+    $template = file_get_contents(plugin_dir_url( __FILE__ ) . 'templates/default.html', false, stream_context_create($arrContextOptions));
     #Replacing keywords
     $template = str_replace(array('#STYLE#', '#EMBED#'), array($style, $embed), $template);
     
@@ -88,10 +96,10 @@ function leads_gallery_shortcode($attrs)
     if(($is_lead == 1) && empty($_SESSION['video_leads_gallery_register']))
     {
         #Template for lead capture
-        $leads = file_get_contents(plugin_dir_url( __FILE__ ) . 'templates/leads.html');
+        $leads = file_get_contents(plugin_dir_url( __FILE__ ) . 'templates/leads.html', false, stream_context_create($arrContextOptions));
         
         #Scripts from Facebook API
-        $script_fb = file_get_contents(plugin_dir_url( __FILE__ ) . 'templates/fb.html');
+        $script_fb = file_get_contents(plugin_dir_url( __FILE__ ) . 'templates/fb.html', false, stream_context_create($arrContextOptions));
         #Replacing keywords
         $script_fb = str_replace(array('#FB_ID#', '#LANG#', '#AJAX#'), array($id_facebook, __('en_US', 'leads-gallery'), leads_gallery_cadastro_ajax()), $script_fb);
         
