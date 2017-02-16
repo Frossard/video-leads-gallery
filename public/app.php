@@ -79,12 +79,7 @@ function leads_gallery_shortcode($attrs)
     $style = 'width: ' . $width . '; height: ' . $height . '; ' . $style;
     
     /* SSL File Get Contents */
-    $arrContextOptions = array(
-        "ssl" => array(
-            "verify_peer" => false,
-            "verify_peer_name" => false,
-        ),
-    );
+    $arrContextOptions = leads_gallery_contextOptions();
     
     #Template for embed without lead capture
     $template = file_get_contents(plugin_dir_url( __FILE__ ) . 'templates/default.html', false, stream_context_create($arrContextOptions));
@@ -130,18 +125,27 @@ function leads_gallery_insert_leads($lead)
     /* verifico se o lead existe, se existir retorno false */
     if(leads_gallery_insert_verify_lead($lead))
     {
+         #Cadastro por e-mail
+        if($lead->fl_origin == 2){
+            $fl_active = 2;
+        }else{
+            $fl_active = 1;
+        }
+        
         $wpdb->insert( 
             'wp_leads_list', 
             array( 
                 'ds_name' => $lead->ds_name, 
                 'ds_email' => $lead->ds_email,
                 'dt_created' => date('Y-m-d h:i:s'),
-                'fl_origin' => $lead->fl_origin
+                'fl_origin' => $lead->fl_origin,
+                'fl_active' => $fl_active
             ), 
             array( 
                 '%s', 
                 '%s',
                 '%s',
+                '%d',
                 '%d'
             ) 
         );
@@ -195,13 +199,20 @@ function leads_gallery_send_email($lead, $token, $path)
     $sitename = get_bloginfo( 'name' );
     $subject = __('Register confirmation', 'leads-gallery') . ' - ' . $sitename;
     
-    $message = __('Please click the link below to complete your registration:', 'leads-gallery') . '<br/><br/><a href="' . $path . '?leads_gallery_token=' . $token . '">' . $path . '</a>';
+    $message = '<p>' . __('Please click the link below to complete your registration:', 'leads-gallery') . '<br/><br/><a href="' . $path . '?leads_gallery_token=' . $token . '">' . $path . '</a></p>';
     
     $headers = array();
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'From: ' . $sitename . ' <' . get_bloginfo( 'admin_email' ) . '>';
-    
-    wp_mail( $lead->ds_email, $subject, $message, $headers );
+        
+    /* SSL File Get Contents */
+    $arrContextOptions = leads_gallery_contextOptions();
+    #Template for embed without lead capture
+    $template = file_get_contents(plugin_dir_url(__FILE__) . 'templates/email.html', false, stream_context_create($arrContextOptions));
+    #Replacing keywords
+    $template = str_replace(array('#TITLE#', '#CONTENT#'), array($subject, $message), $template);
+
+    wp_mail( $lead->ds_email, $subject, $template, $headers );
 }
 
 function leads_gallery_generate_token($lead)
@@ -261,4 +272,17 @@ function lead_gallery_active_email($id)
         ), 
         array( '%d' ) 
     );
+}
+
+function leads_gallery_contextOptions()
+{
+    /* SSL File Get Contents */
+    $arrContextOptions = array(
+        "ssl" => array(
+            "verify_peer" => false,
+            "verify_peer_name" => false,
+        ),
+    );
+    
+    return $arrContextOptions;
 }
