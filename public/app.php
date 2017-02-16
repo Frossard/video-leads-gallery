@@ -197,7 +197,7 @@ function leads_gallery_cadastro_ajax()
 function leads_gallery_send_email($lead, $token, $path)
 {
     $sitename = get_bloginfo( 'name' );
-    $subject = __('Register confirmation', 'leads-gallery') . ' - ' . $sitename;
+    $subject = __('Register confirmation', 'leads-gallery');
     
     $message = '<p>' . __('Please click the link below to complete your registration:', 'leads-gallery') . '<br/><br/><a href="' . $path . '?leads_gallery_token=' . $token . '">' . $path . '</a></p>';
     
@@ -212,6 +212,8 @@ function leads_gallery_send_email($lead, $token, $path)
     #Replacing keywords
     $template = str_replace(array('#TITLE#', '#CONTENT#'), array($subject, $message), $template);
 
+    $subject .= ' - ' . $sitename;
+    
     wp_mail( $lead->ds_email, $subject, $template, $headers );
 }
 
