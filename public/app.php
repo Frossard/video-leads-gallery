@@ -10,7 +10,7 @@ add_action( 'wp_ajax_nopriv_video_leads_gallery', 'leads_gallery_my_action_callb
 function leads_gallery_my_action_callback()
 {
     $lead = leads_gallery_setObj_lead($_POST);
-    
+    /* Verifica se o lead já existe, se não ele insere. Caso já exista retorna false; */
     if(leads_gallery_insert_leads($lead)){
         
         #Cadastro por e-mail
@@ -187,9 +187,7 @@ function leads_gallery_cadastro_ajax()
         },
         success: function (result) {
             var json = JSON.parse(result);
-            if (json.return === 0){
-                jQuery('.video-leads-gallery-middle').fadeOut('slow');
-            }
+            jQuery('.video-leads-gallery-middle').fadeOut('slow');
         }
     });";
 }
